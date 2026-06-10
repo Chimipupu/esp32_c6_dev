@@ -13,17 +13,28 @@
 // -----------------------------------------------------------
 // [コンパイルスイッチ]
 
-// [ESP32-C6 Super Mini] https://www.espboards.dev/esp32/esp32-c6-super-mini/
-#define PCB_ESP32_C6_SUPER_MINI
+// [M5NanoC6] https://docs.m5stack.com/ja/core/M5NanoC6
+#define PCB_M5_NANO_C6
 
-// -----------------------------------------------------------
+// [ESP32-C6 Super Mini] https://www.espboards.dev/esp32/esp32-c6-super-mini/
+// #define PCB_ESP32_C6_SUPER_MINI
+
+#ifdef PCB_M5_NANO_C6
+#define OB_IR_LED_PIN       3 // オンボード赤外線LED      @GPIO 3
+#define OB_BUTTON_PIN       9 // オンボードスイッチ       @GPIO 9
+#define OB_LED_PIN         15 // オンボード青色LED        @GPIO 15
+#define OB_RGBLED_EN_PIN   19 // オンボードRGBLED有効ピン @GPIO 19
+#define OB_RGBLED_PIN      20 // オンボードRGBLED        @GPIO 20
+#endif // PCB_M5_NANO_C6
+
 #ifdef PCB_ESP32_C6_SUPER_MINI
 #define OB_LED_PIN        15 // オンボードLED    @GPIO 15
 #define OB_RGBLED_PIN      8 // オンボードRGBLED @GPIO 8
-
-#define UART_BAUD         115200
 #endif // PCB_YD_ESP32_S3
 
+// -----------------------------------------------------------
+// [Define]
+#define UART_BAUD         115200
 // -----------------------------------------------------------
 // [DeepSleep]
 #include "esp_sleep.h"
